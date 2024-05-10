@@ -15,11 +15,13 @@ module.exports = {
       },
       anoDeLancamento: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        field: 'ano_de_lancamento'
       },
       estaDisponivel: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        field: 'esta_disponivel'
       }
     });
   },

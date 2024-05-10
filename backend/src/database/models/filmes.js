@@ -26,6 +26,5 @@ const Filmes = db.define('Filmes', {
     underscored: true,
 });
 
-Filmes.belongsToMany(Atores, {through: 'filmesEAtores', foreignKey: 'filmeId'});
 
 module.exports = Filmes;

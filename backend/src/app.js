@@ -1,4 +1,5 @@
 const express = require('express')
+const rotas = require('./routes/index.routes')
 
 const app = express();
 
@@ -12,5 +13,8 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
     next();
 })
+
+// Chama as rotas
+app.use(rotas);
 
 module.exports = app;

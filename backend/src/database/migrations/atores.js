@@ -15,7 +15,8 @@ module.exports = {
       },
       dataDeNascimento: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
+        field: 'data_de_nascimento'
       },
       nacionalidade: {
         type: Sequelize.STRING,

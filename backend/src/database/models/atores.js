@@ -1,6 +1,5 @@
 const { DataTypes, Model, ModelDefined, Optional } = require('sequelize');
 const db = require('./index');
-const Filmes = require('./filmes');
 
 
 const Atores = db.define('Atores', { 
@@ -28,6 +27,5 @@ const Atores = db.define('Atores', {
     underscored: true,
 });
 
-Atores.belongsToMany(Filmes, {through: 'filmesEAtores', foreignKey: 'atorId'});
 
 module.exports = Atores;
