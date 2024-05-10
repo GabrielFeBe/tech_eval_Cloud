@@ -1,10 +1,10 @@
 module.exports = {
   development:{
-    username: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'password',
-    database: process.env.DB_NAME || 'MoviesDB',
+    username: process.env.DB_USER || 'postgres',
+    password: process.env.DB_PASSWORD || '102030',
+    database: process.env.DB_NAME || 'DB_CINEMA',
     host: process.env.DB_HOST || 'localhost',
-    port: Number(process.env.DB_PORT) || 3306,
+    port: Number(process.env.DB_PORT) || 5432,
     dialect: 'postgres',
   }
 };
