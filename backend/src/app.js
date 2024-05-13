@@ -14,7 +14,13 @@ app.use((req, res, next) => {
     next();
 })
 
+// checa a saúde do servidor;
+app.get('/health', (req, res) => {
+    res.send('OK');
+})
+
 // Chama as rotas
 app.use(rotas);
+
 
 module.exports = app;
