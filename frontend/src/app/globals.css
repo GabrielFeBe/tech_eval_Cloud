@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background: linear-gradient(180deg, #6F90A3 0%, #999999 100%);
+}
+
+header {
+  box-shadow: 0px 8px 16px -6px #18274B14;
+}
+
+.text-selected {
+  box-shadow: 0px 4px 4px 0px #00000040;
+
+}
