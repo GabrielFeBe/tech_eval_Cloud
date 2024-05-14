@@ -1,4 +1,4 @@
-const Filmes = require('../database/models/filmes');
+const { Filmes, Atores } = require('../database/models');
 
 const criaOuAtualizaFilme = async ({id, titulo, anoDeLancamento, estaDisponivel}) => {
   // checa se é chamada com id pra invez de criar um novo filme atualizar um existente;
@@ -22,7 +22,12 @@ const buscaFilmes = async () => {
 }
 
 const buscaFilme = async (id) => {
-  const filme = await Filmes.findByPk(id);
+  const filme = await Filmes.findByPk(id, {
+    include: [{
+      model: Atores, as: 'atores', through: { attributes: [] }
+    }]
+  
+  });
   return filme;
 }
 

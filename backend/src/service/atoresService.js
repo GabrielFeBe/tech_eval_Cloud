@@ -1,4 +1,4 @@
-const Atores = require('../database/models/atores');
+const { Atores, Filmes } = require('../database/models');
 
 const criaOuAtualizaAtor = async ({id, nome, dataDeNascimento, nacionalidade}) => {
   // checa se é chamada com id pra invez de criar um novo ator atualizar um existente;
@@ -22,7 +22,11 @@ const buscaAtores = async () => {
 }
 
 const buscaAtor = async (id) => {
-  const ator = await Atores.findByPk(id);
+  const ator = await Atores.findByPk(id ,{
+   include:[{
+    model: Filmes, as: 'filmes', through: { attributes: []}
+   }]
+  });
   return ator;
 }
 

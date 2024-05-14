@@ -1,13 +1,14 @@
 'use client'
 import Input from "@/app/components/Input";
+import { revalidateAll } from "@/lib/actions";
 import endpoint from "@/utils/endpoint";
 import { useState } from "react";
 
 export default function Page() {
   const [filme, setFilme] = useState({
     titulo: "",
-    ano: 0,
-    disponivel: false,
+    anoDeLancamento: 0,
+    estaDisponivel: false,
   });
   
   const handleSubmit = async (event) => {
@@ -25,7 +26,13 @@ export default function Page() {
         const jsonMsg = await response.json();
         throw new Error('Não foi possível criar o filme por'.concat(' - ').concat(jsonMsg.message));
       }
-      const data = await response.json();
+      setFilme({
+        titulo: "",
+        anoDeLancamento: 0,
+        estaDisponivel: false,
+      });
+      await revalidateAll()
+      alert("Filme criado com sucesso!");
     } catch (error) {
       alert(error.message);
     }
@@ -36,8 +43,8 @@ export default function Page() {
       <h1 className="text-4xl font-bold">Criar Filmes</h1>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <Input label="Título" name="titulo" type="text" state={filme} setState={setFilme} value={filme.titulo} className="rounded-md pl-[5px]"/>
-        <Input label="Ano" name="ano" type="number" state={filme} setState={setFilme} value={filme.ano} className="rounded-md pl-[5px]"/>
-        <Input label="Está disponível?" name="disponivel" type="checkbox" state={filme} setState={setFilme} value={filme.disponivel}/>
+        <Input label="Ano" name="anoDeLancamento" type="number" state={filme} setState={setFilme} value={filme.anoDeLancamento} className="rounded-md pl-[5px]"/>
+        <Input label="Está disponível?" name="estaDisponivel" type="checkbox" state={filme} setState={setFilme} value={filme.estaDisponivel}/>
         <button type="submit">Criar</button>
       </form>
     </main>
