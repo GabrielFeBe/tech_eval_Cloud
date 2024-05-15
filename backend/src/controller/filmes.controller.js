@@ -34,10 +34,17 @@ const deletaFilme = async (req, res) => {
   res.status(204).end();
 }
 
+const buscaFilmesPorTitulo = async (req, res) => {
+  const { titulo } = req.query;
+  const filmes = await service.buscarFilmesPorTitulo(titulo);
+  res.status(200).json(filmes);
+}
+
 module.exports = {
   buscaFilme,
   buscaFilmes,
   criaFilme,
   atualizaFilme,
-  deletaFilme
+  deletaFilme,
+  buscaFilmesPorTitulo,
 }

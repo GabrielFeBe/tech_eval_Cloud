@@ -1,4 +1,5 @@
 const { Atores, Filmes } = require('../database/models');
+const {Op} = require('sequelize');
 
 const criaOuAtualizaAtor = async ({id, nome, dataDeNascimento, nacionalidade}) => {
   // checa se é chamada com id pra invez de criar um novo ator atualizar um existente;
@@ -34,9 +35,17 @@ const deletaAtor = async (id) => {
   await Atores.destroy({ where: { id } });
 }
 
+const buscarAtoresPorNome = async (nome) => {
+  const ator = await Atores.findAll({ where: { nome:{ 
+    [Op.like]: `%${nome}%`,
+  }}});
+  return ator;
+}
+
 module.exports = {
   criaOuAtualizaAtor,
   buscaAtores,
   buscaAtor,
-  deletaAtor
+  deletaAtor,
+  buscarAtoresPorNome,
 }

@@ -1,57 +1,35 @@
 'use static';
 import Image from "next/image";
 import svg from "../assets/search.svg";
-import endpoint from "@/utils/endpoint";
 import Link from 'next/link';
+import { pegarAtores, pegarFilmes } from "@/lib/utils";
 
 export default async function Home() {
-  let filmes;
-  let atores;
+  let filmes = [];
+  let atores = [];
   // pega os filmes do banco de dados
   try {
-    const response = await fetch(endpoint.concat("/filmes"), {
-      next:{
-        tags: ['filmes']
-      }
-    });
-    if (!response.ok) {
-      throw new Error('Não foi possível carregar os filmes');
-    }
-    const filmesRes = await response.json();
-    filmes = filmesRes;
+    filmes = await pegarFilmes();
   } catch (error) {
-    console.log(error.message);
+    filmes = null;
   }
-
   // pega os atores do banco de dados
   try {
-    const response = await fetch(endpoint.concat("/atores") , {
-      next:{
-        tags: ['atores']
-      }
-    });
-    if (!response.ok) {
-      throw new Error('Não foi possível carregar os atores');
-    }
-    const atoresRes = await response.json();
-    atores = atoresRes;
+    atores = await pegarAtores();
   } catch (error) {
-    console.log(error.message);
+    atores = null;
   }
   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-     
-
-      <label htmlFor="" className="relative">
+      <label htmlFor="" className="relative m-0">
         <input type="text" className="w-[947px] h-[51px] rounded-full pl-[20px]" placeholder="Pesquise por filme ou ator aqui"/>
         <button className="bg-[#373E52] w-[82px] h-[44px] rounded-full flex items-center justify-center absolute top-[3.5px] right-[3.5px]">
           <Image src={svg} alt="search" width="36.2" height="28" />
         </button>
       </label>
-
       {/* carrossel de filmes */}
-      <div className="flex flex-col gap-4">
+   { filmes ? <div className="flex flex-col gap-4">
         <h2 className="text-2xl font-bold">Filmes</h2>
         <div className="flex gap-10 w-[800px] overflow-auto">
           {filmes?.map((filme) => (
@@ -62,10 +40,9 @@ export default async function Home() {
             </Link>
           ))}
         </div>
-      </div>
-
+      </div> : <h2 className="text-red-800 font-bold"> Não foi possivel carregar os filmes </h2> }
       {/* carrossel de atores */}
-      <div className="flex flex-col gap-4">
+     { atores ? <div className="flex flex-col gap-4">
         <h2 className="text-2xl font-bold">Atores</h2>
         <div className="flex gap-10 w-[800px] overflow-auto">
           {atores?.map((ator) => (
@@ -76,7 +53,7 @@ export default async function Home() {
             </Link>
           ))}
         </div>
-      </div>
+      </div> : <h2 className="text-red-800 font-bold"> Não foi possivel carregar os atores </h2>}
 
     </main>
   );

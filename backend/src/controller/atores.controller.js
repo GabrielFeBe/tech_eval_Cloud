@@ -34,10 +34,17 @@ const deletaAtor = async (req, res) => {
   res.status(204).end();
 }
 
+const buscaAtoresPorNome = async (req, res) => {
+  const { nome } = req.query;
+  const ator = await service.buscarAtoresPorNome(nome);
+  res.status(200).json(ator);
+}
+
 module.exports = {
   buscaAtores,
   buscaAtor,
   criaAtor,
   atualizaAtor,
-  deletaAtor
+  deletaAtor,
+  buscaAtoresPorNome,
 }
