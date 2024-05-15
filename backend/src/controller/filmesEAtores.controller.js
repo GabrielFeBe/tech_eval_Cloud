@@ -7,6 +7,13 @@ const relacionarFilmeEAtores = async (req, res) => {
   res.status(201).json(relacionamento);
 }
 
+const deletarRelacionamento = async (req, res) => {
+  const { filmeId, atorId } = req.body;
+  await service.deletarRelacionamento({filmeId, atorId});
+  res.status(204).end();
+}
+
 module.exports = {
   relacionarFilmeEAtores,
+  deletarRelacionamento,
 }

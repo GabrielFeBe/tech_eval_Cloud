@@ -34,7 +34,6 @@ export async function pegarFilme(id) {
 
 export async function pesquisarFilme(filme) {
   const response = await fetch(endpoint.concat(`/filmes/titulo?titulo=${filme}`));
-  console.log(response);
   if (!response.ok) {
     throw new Error('Não foi possível pesquisar o filme');
   }
@@ -64,6 +63,22 @@ export async function adicionarFilmeAoAtor(atorId, filmeId) {
   return await response.json();
 }
 
+// excluir o relacionamento
+export async function excluirRelacionamento(atorId, filmeId) {
+  const response = await fetch(endpoint.concat('/relacionar'), {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ atorId, filmeId }),
+  });
+  if (!response.ok) {
+    throw new Error('Não foi possível excluir o relacionamento');
+  }
+  return await response.json();
+}
+
+
 // Deleta o ator.
 
 export async function deletandoAtor(atorId) {
@@ -75,6 +90,14 @@ export async function deletandoAtor(atorId) {
   }
 }
 
+export async function deletandoFilme(filmeId) {
+  const response = await fetch(endpoint.concat('/filmes/').concat(filmeId), {
+    method: 'DELETE',
+  });
+  if (!response.ok) {
+    throw new Error('Não foi possível deletar o filme');
+  }
+}
 
 export async function editandoAtor(atorId, ator) {
   const response = await fetch(endpoint.concat('/atores/').concat(atorId), {
@@ -89,3 +112,19 @@ export async function editandoAtor(atorId, ator) {
   }
   return await response.json();
 } 
+
+
+
+export async function editandoFilme(filmeId, filme) {
+  const response = await fetch(endpoint.concat('/filmes/').concat(filmeId), {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(filme),
+  });
+  if (!response.ok) {
+    throw new Error('Não foi possível editar o filme');
+  }
+  return await response.json();
+}

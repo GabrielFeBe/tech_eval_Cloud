@@ -7,7 +7,7 @@ export default function Input({ label, type, state, setState, ...props }) {
     }
     setState({ ...state, [name]: value });
   };
-  console.log(props);
+  
   return (
     <label className="flex flex-col">
       <span>{label}</span>

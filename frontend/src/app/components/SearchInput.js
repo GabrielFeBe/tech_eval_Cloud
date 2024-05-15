@@ -8,6 +8,8 @@ export default function SearchInput({
   placeholder,
   buttonSize,
   inpputSize,
+  children,
+  ...props
 }) {
   return (
     <label htmlFor="" className="relative">
@@ -17,6 +19,7 @@ export default function SearchInput({
         placeholder={placeholder}
         value={texto}
         onChange={(e) => setTexto(e.target.value)}
+        {...props}
       />
       <button
         className={`bg-[#373E52] ${buttonSize} rounded-full flex items-center justify-center absolute`}
@@ -24,6 +27,7 @@ export default function SearchInput({
       >
         <Image src={svg} alt="search" width="36.2" height="28" />
       </button>
+      {children}
     </label>
   );
 }

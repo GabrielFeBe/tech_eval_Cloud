@@ -3,6 +3,8 @@ import Image from "next/image";
 import svg from "../assets/search.svg";
 import Link from 'next/link';
 import { pegarAtores, pegarFilmes } from "@/lib/utils";
+import SearchInput from "./components/SearchInput";
+import BarraDePesquisaHome from "./components/BarraDePesquisaHome";
 
 export default async function Home() {
   let filmes = [];
@@ -22,12 +24,14 @@ export default async function Home() {
   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <label htmlFor="" className="relative m-0">
+      {/* <label htmlFor="" className="relative m-0">
         <input type="text" className="w-[947px] h-[51px] rounded-full pl-[20px]" placeholder="Pesquise por filme ou ator aqui"/>
         <button className="bg-[#373E52] w-[82px] h-[44px] rounded-full flex items-center justify-center absolute top-[3.5px] right-[3.5px]">
           <Image src={svg} alt="search" width="36.2" height="28" />
         </button>
-      </label>
+      </label> */}
+      <BarraDePesquisaHome></BarraDePesquisaHome>
+     
       {/* carrossel de filmes */}
    { filmes ? <div className="flex flex-col gap-4">
         <h2 className="text-2xl font-bold">Filmes</h2>

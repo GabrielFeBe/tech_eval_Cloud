@@ -5,6 +5,10 @@ const relacionarFilmeEAtores = async ({filmeId, atorId}) => {
   return relacionamento;
 }
 
+const deletarRelacionamento = async({filmeId, atorId}) => {
+  await FilmesEAtores.destroy({ where: {filmeId, atorId}});
+}
+
 module.exports = { 
   relacionarFilmeEAtores,
 }

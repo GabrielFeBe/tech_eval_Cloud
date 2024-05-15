@@ -10,6 +10,5 @@ export function Nav({children}) {
 
 export function NavLink(props){
   const path = usePathname();
-  console.log(props)
   return <Link {...props} className={`text-base hover:font-bold text-[#705A5A] ${path === props.href && 'font-bold text-selected'}`}/>
 }
