@@ -8,7 +8,7 @@ import { revalidateAll } from "@/lib/actions";
 export default function Page() {
   const [atores, setAtores] = useState({
     nome: "",
-    dataDeNascimento: new Date(),
+    dataDeNascimento: "",
     nacionalidade: "",
   });
 
@@ -38,6 +38,9 @@ export default function Page() {
       }
   };
 
+  const desativarBotao = () => {
+    return !atores.nome || !atores.dataDeNascimento || !atores.nacionalidade;
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -50,7 +53,9 @@ export default function Page() {
         className="pl-[5px] rounded-md"/>
         <Input label="Nacionalidade" name="nacionalidade" type="text" state={atores} setState={setAtores} value={atores.nacionalidade}
         className="pl-[5px] rounded-md"/>
-        <button type="submit">Criar</button>
+        <button  className={`rounded-md pl-[5px] ${desativarBotao() ? 'bg-gray-300' : 'bg-black text-white'} transition-all duration-500`}
+        disabled={desativarBotao()}
+        type="submit">Criar</button>
       </form>
     </main>
   );

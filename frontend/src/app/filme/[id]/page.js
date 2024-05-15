@@ -83,7 +83,6 @@ export default function Page({ params }) {
     }
   };
 
-
   return (
     <main className="min-h-screen flex justify-center items-center flex-col">
       <section className="flex w-full h-[400px] items-center justify-around">
@@ -142,12 +141,12 @@ export default function Page({ params }) {
         </CardInfo>
         {/* Linha de filmes */}
 
-        <div>
+        <div className="h-[320px] overflow-y-auto">
           <SearchInput
             buttonSize={"w-[40px] h-[44px] top-[-12px] right-[3.5px]"}
             funcaoPesquisa={buscarAtores}
             inpputSize={"w-[300px] h-[51px]"}
-            placeholder={"Pesquise por um filme para adicionar ao ator"}
+            placeholder={"Pesquise por um ator para relacionar ao filme"}
             setTexto={setAtorNome}
             texto={atorNome}
           />
@@ -158,9 +157,17 @@ export default function Page({ params }) {
                 <p>{ator.nome}</p>
                 <p>{ator.nacionalidade}</p>
                 {setOfIds.has(ator.id) ? (
-                  <p>Relacionado</p>
+                  <button
+                    disabled={true}
+                    className="bg-gray-500 p-2 text-white rounded-full w-[100px]"
+                  >
+                    Relacionado
+                  </button>
                 ) : (
-                  <button onClick={() => relacionarFilmeAoAtor(ator)}>
+                  <button
+                    onClick={() => relacionarFilmeAoAtor(ator)}
+                    className="bg-black p-2 text-white rounded-full w-[100px]"
+                  >
                     Relacionar
                   </button>
                 )}

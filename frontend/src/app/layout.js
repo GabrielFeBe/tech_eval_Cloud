@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { Nav, NavLink} from "./components/Nav";
+import { Nav, NavLink } from "./components/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,17 +15,15 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <header className="h-[65px] border-b-[#705A5A] border-b-[1px] flex justify-end items-center w-full fixed">
-         <Nav>
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/criar/filmes">Criar Filmes</NavLink>
-          <NavLink href="/criar/atores">Criar Atores</NavLink>
-         </Nav>
+          <Nav>
+            <NavLink href="/">Home</NavLink>
+            <NavLink href="/criar/filmes">Criar Filmes</NavLink>
+            <NavLink href="/criar/atores">Criar Atores</NavLink>
+          </Nav>
         </header>
         {children}
-        <footer>
-
-        </footer>
-        </body>
+        <footer></footer>
+      </body>
     </html>
   );
 }

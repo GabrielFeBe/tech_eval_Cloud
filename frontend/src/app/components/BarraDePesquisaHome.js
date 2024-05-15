@@ -9,7 +9,7 @@ export default function BarraDePesquisaHome({ state, setState }) {
   const [filmes, setFilmes] = useState([]);
   const [atores, setAtores] = useState([]);
   const [estaFocado, setEstaFocado] = useState(false);
-  const [estaPorCima , setEstaPorCima] = useState(false);
+  const [estaPorCima, setEstaPorCima] = useState(false);
 
   const pesquisar = async () => {
     if (textoPesquisa.length > 0) {
@@ -33,36 +33,45 @@ export default function BarraDePesquisaHome({ state, setState }) {
       texto={textoPesquisa}
       setTexto={setTextoPesquisa}
       funcaoPesquisa={pesquisar}
-      onFocus={() => setEstaFocado(true)} // Atualiza o estado quando o componente é focado
-      onBlur={() => setEstaFocado(false)} // Atualiza o estado quando o componente perde o foco
-      onMouseEnter={() => setEstaPorCima(true)} // Atualiza o estado quando o mouse entra no componente
+      onFocus={() => setEstaPorCima(true)}
+      onBlur={() => setEstaPorCima(false)}
+      onMouseEnter={() => setEstaPorCima(true)}
+      onMouseLeave={() => setEstaPorCima(false)}
     >
-      {(filmes.length > 0 || atores.length) > 0 && (estaFocado || estaPorCima) && (
-        <div className="absolute bg-slate-400 w-full h-[300px] overflow-y-auto"
-        onMouseLeave={() => setEstaPorCima(false)} // Atualiza o estado quando o mouse sai do componente
-        >
-          {
-            [...filmes, ...atores].map((item) => {
-              if(item.titulo) {
+      {(filmes.length > 0 || atores.length) > 0 &&
+        (estaFocado || estaPorCima) && (
+          <div
+            className="absolute bg-slate-400 w-full h-[300px] overflow-y-auto"
+            onMouseEnter={() => setEstaPorCima(true)}
+            onMouseLeave={() => setEstaPorCima(false)}
+          >
+            {[...filmes, ...atores].map((item) => {
+              if (item.titulo) {
                 return (
-                  <Link href={`/filme/${item.id}`} key={item.id} className="flex flex-col gap-4 hover:bg-slate-600">
+                  <Link
+                    href={`/filme/${item.id}`}
+                    key={item.id}
+                    className="flex flex-col gap-4 hover:bg-slate-600"
+                  >
                     <p>{item.titulo}</p>
                     <p>{item.anoDeLancamento}</p>
                   </Link>
-                )
+                );
               } else {
                 return (
-                  <Link href={`/ator/${item.id}`} key={item.id} className="flex flex-col gap-4 hover:bg-slate-600">
+                  <Link
+                    href={`/ator/${item.id}`}
+                    key={item.id}
+                    className="flex flex-col gap-4 hover:bg-slate-600"
+                  >
                     <p>{item.nome}</p>
                     <p>{item.nacionalidade}</p>
                   </Link>
-                )
+                );
               }
-
-            })
-          }
-        </div>
-      )}
+            })}
+          </div>
+        )}
     </SearchInput>
   );
 }

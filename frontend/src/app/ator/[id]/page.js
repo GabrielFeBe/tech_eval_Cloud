@@ -156,7 +156,8 @@ export default function AtorPage({ params }) {
                 <p>{filme.titulo}</p>
                 <p>{filme.anoDeLancamento}</p>
                 {setOfIds.has(filme.id) ? (
-                  <p>Relacionado</p>
+                  <button disabled={true}
+                  className="bg-gray-500 p-2 text-white rounded-full w-[100px]">Relacionado</button>
                 ) : (
                   <button onClick={() => relacionarFilmeAoAtor(filme)}
                   className="bg-black p-2 text-white rounded-full w-[100px]"
