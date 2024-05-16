@@ -16,6 +16,7 @@ app.use((req, res, next) => {
 
 // checa a saúde do servidor;
 app.get('/health', (req, res) => {
+    // se você quiser checar a saúde de um banco de dados ou outro serviço aqui é um bom lugar;
     res.send('OK');
 })
 

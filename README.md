@@ -334,7 +334,47 @@ O projeto consiste em um sistema que permite criação, edição, e exclusão de
 
 ### Configurações
 
-- Para rodar o projeto basta clonar com `git clone`, trocar para a pasta do frontend e rodar o comando `npm install` para instalar todas as dependencias.
-- Para rodar o projeto basta rodar o comando `npm run dev` e ele ira abrir uma aba no seu navegador com o projeto rodando.
+- O projeto já foi clonado na explicação de configs do backend, então não é necessário clonar novamente, já que é um monorepo, apenas troque para a pasta `frontend` com o comando `cd frontend`, e rode o comando `npm install` para instalar todas as dependencias.
+- Para rodar o FE é necessario ter o backend rodando, pois ele faz todas as requisições para o backend.
 - Dentro do arquivo `src/utils/endpoint.ts` está a base url do backend, caso você mude a porta do backend, é necessário mudar a porta no arquivo `endpoint.ts` também.
-- O front end só funciona se o backend estiver rodando pois literalmente todas as requisições são feitas para o backend.
+- Para rodar o projeto basta rodar o comando `npm run dev` e ele ira abrir uma aba no seu navegador com o projeto rodando.
+- E lembre-se do aviso no inicio do README, é necessário ter o Node.js Versão v18.17.0 ou maior instalado na sua maquina.
+
+### Paginas
+
+<details>
+<summary>Home</summary>
+
+[![Vídeo do Loom](https://cdn.loom.com/sessions/thumbnails/ba90d5116a4d4c1fbb26ed060749852b-with-play.gif)](https://www.loom.com/embed/ba90d5116a4d4c1fbb26ed060749852b?sid=3d33f9ee-25be-4c49-9f62-4d897bf56411)
+
+</details>
+
+<details>
+<summary>atores/:id</summary>
+
+[![Clique para assistir ao vídeo](https://cdn.loom.com/sessions/thumbnails/32392613bc1e4c0785992cc0bce3b793-with-play.gif)](https://www.loom.com/embed/32392613bc1e4c0785992cc0bce3b793?sid=e6bc6450-0171-4fb0-acd7-81aca88353b5)
+
+</details>
+
+<details>
+<summary>criar/atores</summary>
+
+[![Clique para assistir ao vídeo](https://cdn.loom.com/sessions/thumbnails/3d11e48fac9b498aa81fc1b98abbded0-with-play.gif)](https://www.loom.com/embed/3d11e48fac9b498aa81fc1b98abbded0?sid=4f8341f7-15a4-4d19-a3b1-fdd3f4cb6321)
+
+</details>
+
+<details>
+<summary>criar/filmes</summary>
+
+[![Clique para assistir ao vídeo](https://cdn.loom.com/sessions/thumbnails/22b38a218fb84ae59d02f544898db88c-with-play.gif)](https://www.loom.com/embed/22b38a218fb84ae59d02f544898db88c?sid=957ed6d1-f9a9-4b19-bc73-61848cbd4468)
+
+</details>
+
+<details>
+<summary>Mostrando relacionamentos</summary>
+
+- Lembrando que eu não coloquei a exclusão de relacionamentos, mas é algo que pode ser feito facilmente, eu fiz no backend, mas não fiz no frontend.
+
+[![Clique para assistir ao vídeo](https://cdn.loom.com/sessions/thumbnails/7583bcbda68f40d0971a5269522bf9e8-with-play.gif)](https://www.loom.com/embed/7583bcbda68f40d0971a5269522bf9e8?sid=1455265a-7b60-41a7-84ee-18d2909c19fc)
+
+</details>
